@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Clinical light theme — calm slate/teal base */
+    --background: 210 40% 98%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Teal — trustworthy clinical primary */
+    --primary: 187 72% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 215 28% 17%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 42%;
+
+    --accent: 187 60% 92%;
+    --accent-foreground: 187 72% 24%;
+
+    --destructive: 4 62% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 187 72% 33%;
+
+    --radius: 0.65rem;
+
+    /* Non-alarming risk gradient: Mint -> Amber -> Muted Coral */
+    --risk-low: 158 55% 52%;
+    --risk-moderate: 42 78% 60%;
+    --risk-elevated: 25 78% 60%;
+    --risk-high: 4 62% 62%;
+  }
+
+  .dark {
+    --background: 215 32% 10%;
+    --foreground: 210 40% 96%;
+
+    --card: 215 30% 13%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 215 30% 13%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 187 64% 46%;
+    --primary-foreground: 215 32% 10%;
+
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 215 25% 20%;
+    --muted-foreground: 214 20% 68%;
+
+    --accent: 187 40% 24%;
+    --accent-foreground: 187 64% 84%;
+
+    --destructive: 4 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 24%;
+    --input: 215 25% 24%;
+    --ring: 187 64% 46%;
+
+    --risk-low: 158 45% 48%;
+    --risk-moderate: 42 68% 56%;
+    --risk-elevated: 25 68% 56%;
+    --risk-high: 4 55% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'tnum' 1;
+  }
+  /* Tabular numerals for vitals/metrics legibility */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
