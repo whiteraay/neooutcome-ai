@@ -7,15 +7,15 @@ import { StreamStatus } from './StreamStatus'
 import { Button } from '@/components/ui/button'
 
 const TITLES: Record<string, { title: string; subtitle: string }> = {
-  '/': {
+  '/app': {
     title: 'Welcome Dashboard',
     subtitle: 'Active NICU status at a glance',
   },
-  '/patient': {
+  '/app/patient': {
     title: 'NICU Patient Command Center',
     subtitle: 'Individual 24-hour outcome prediction',
   },
-  '/regional': {
+  '/app/regional': {
     title: 'Regional Insight Dashboard',
     subtitle: 'AshyqData analytical layer',
   },
@@ -39,7 +39,11 @@ export function DashboardContainer() {
   const { dark, toggle } = useDarkMode()
   const meta =
     TITLES[pathname] ??
-    (pathname.startsWith('/patient') ? TITLES['/patient'] : TITLES['/'])
+    (pathname.startsWith('/app/patient')
+      ? TITLES['/app/patient']
+      : pathname.startsWith('/app/regional')
+        ? TITLES['/app/regional']
+        : TITLES['/app'])
 
   return (
     <div className="flex min-h-screen flex-col bg-background">

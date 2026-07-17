@@ -3,9 +3,9 @@ import { Activity, LayoutDashboard, Stethoscope, Map } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV = [
-  { to: '/', label: 'Welcome', icon: LayoutDashboard, end: true },
-  { to: '/patient', label: 'Patient Command', icon: Stethoscope, end: false },
-  { to: '/regional', label: 'Regional Insight', icon: Map, end: false },
+  { to: '/app', label: 'Welcome', icon: LayoutDashboard, end: true },
+  { to: '/app/patient', label: 'Patient Command', icon: Stethoscope, end: false },
+  { to: '/app/regional', label: 'Regional Insight', icon: Map, end: false },
 ]
 
 export function SideRail() {

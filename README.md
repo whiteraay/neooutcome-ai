@@ -16,6 +16,36 @@ designed around a *cognitive-load-balanced*, safety-first UX.
 - **Recharts** for medical data plotting
 - **Lucide React** for iconography
 - **React Router** for view switching
+- **GSAP (ScrollTrigger)** for the scroll-linked landing hero
+- **Framer Motion** for UI/element transitions
+
+## Entry sequence — landing (`/`) → dashboard (`/app`)
+
+The entry point (`/`) is a high-impact, scroll-linked landing page that flows
+into the clinical dashboard. It is intentionally separate from the dense in-app
+navigation (which only appears once inside `/app`), so the marketing surface
+stays clean and the workstation UI stays high-density.
+
+- **Phase 1 — `LandingHero.tsx`** — an entrance timeline plays on load (signal
+  rings scale in, wordmark rises, ECG waveform draws itself), then a
+  **GSAP ScrollTrigger** *pins* the stage and scrubs a morph (rings rotate/
+  expand, stage recedes) tied directly to scroll progress. A canvas
+  `ParticleField` gives a subtle medical-tech lattice.
+- **Phase 2 — `FeatureScrollSection.tsx`** — "scrollytelling". The metric visual
+  stays pinned (sticky) while narrative steps scroll past; ScrollTrigger reports
+  the centered step and Framer Motion cross-fades the metric ("6h" → "SHAP" →
+  "6 regions"). One idea at a time = progressive disclosure.
+- **Phase 3 — `DashboardTransition.tsx`** — a single focused CTA ("Analyze
+  Patient Risk") plays a premium full-bleed expansion (Framer Motion) before
+  handing off to the Patient Command Center.
+
+**Accessibility / ethics:** the whole sequence honors
+`prefers-reduced-motion` — reduced-motion users get the fully-resolved states
+with no pinning, scrubbing, or expansion, and navigate immediately. No
+gamified motion; animation only guides the eye toward the primary action.
+
+The Safety Header disclaimer remains pinned above every phase of the landing,
+and the closing CTA restates it alongside the synthetic-data notice.
 
 ## Getting started
 
@@ -72,6 +102,11 @@ Layout uses responsive CSS Grid/Flexbox: the side-rail collapses to a top
 
 | Component | Responsibility |
 | --- | --- |
+| `landing/LandingHero.tsx` | Scroll-linked (GSAP ScrollTrigger) hero — Phase 1 |
+| `landing/FeatureScrollSection.tsx` | Scrollytelling clinical-value section — Phase 2 |
+| `landing/DashboardTransition.tsx` | Premium "Enter Dashboard" hand-off — Phase 3 |
+| `landing/ParticleField.tsx` | Canvas medical-tech node lattice (reduced-motion aware) |
+| `landing/LandingNav.tsx` | Minimalist marketing bar (solidifies on scroll) |
 | `layout/SafetyHeader.tsx` | Permanent clinical disclaimer |
 | `layout/DashboardContainer.tsx` | Shell hosting the switchable views + nav + theme |
 | `patient/RiskIndicator.tsx` | Compact, highly legible risk-score widget |

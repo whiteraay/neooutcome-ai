@@ -22,12 +22,12 @@ export function PatientCommandCenter() {
   const { patients, getPatient } = useLivePatients()
 
   if (!patientId) {
-    return <Navigate to={`/patient/${patients[0].id}`} replace />
+    return <Navigate to={`/app/patient/${patients[0].id}`} replace />
   }
 
   const patient = getPatient(patientId)
   if (!patient) {
-    return <Navigate to={`/patient/${patients[0].id}`} replace />
+    return <Navigate to={`/app/patient/${patients[0].id}`} replace />
   }
 
   return (
@@ -42,7 +42,7 @@ export function PatientCommandCenter() {
             key={p.id}
             patient={p}
             selected={p.id === patient.id}
-            onSelect={(id) => navigate(`/patient/${id}`)}
+            onSelect={(id) => navigate(`/app/patient/${id}`)}
           />
         ))}
       </aside>

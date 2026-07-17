@@ -81,7 +81,7 @@ export function WelcomeDashboard() {
               <PatientCard
                 key={p.id}
                 patient={p}
-                href={`/patient/${p.id}`}
+                href={`/app/patient/${p.id}`}
               />
             ))}
           </CardContent>
