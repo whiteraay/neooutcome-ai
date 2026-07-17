@@ -1,7 +1,7 @@
 import {
   Area,
-  AreaChart,
   CartesianGrid,
+  ComposedChart,
   Legend,
   Line,
   ResponsiveContainer,
@@ -33,7 +33,7 @@ export function RegionalTrendChart({
   return (
     <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={withAvg} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
+        <ComposedChart data={withAvg} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
           <defs>
             <linearGradient id="facilityFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
@@ -71,7 +71,7 @@ export function RegionalTrendChart({
               dot={false}
             />
           )}
-        </AreaChart>
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   )
